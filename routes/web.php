@@ -29,6 +29,7 @@ use App\Http\Controllers\Public\DokumentasiPublikController;
 use App\Http\Controllers\Admin\VerifikasiPembayaranController;
 use App\Http\Controllers\Admin\LaporanDivisiPengurusController;
 use App\Http\Controllers\Pengurus\PengurusPendaftaranController;
+use App\Http\Controllers\UserApproveController;
 
 // Route::get('/', [LandingPageController::class, 'index'])->name('index');
 Route::get('/', [DokumentasiPublikController::class, 'index'])->name('index');
@@ -47,6 +48,10 @@ Route::middleware('auth')->group(function () {
 // Auth
 Auth::routes();
 
+Route::get('/verification/pending', function () {
+    return view('auth.pending');
+})->name('verification.pending');
+
 // Dashboard (semua role)
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home.index');
 
@@ -63,6 +68,11 @@ Route::middleware('CheckRole:Admin')->prefix('admin')->name('admin.')->group(fun
 
      Route::prefix('laporan-divisi')->name('laporan-divisi.')->group(function () {
         Route::get('/', [LaporanDivisiPengurusController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('verifikasi-user')->name('verifikasi-user.')->group(function () {
+        Route::get('/', [UserApproveController::class, 'index'])->name('index');
+        Route::post('/approve/{id}', [UserApproveController::class, 'approve'])->name('approve');
     });
 
     // Kalender Kegiatan

@@ -32,6 +32,12 @@
                 <span>Manajemen User</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{ set_active('admin/verifikasi-user*') }}" href="{{ route('admin.verifikasi-user.index') }}">
+                <i class="fas fa-fw fa-users-cog"></i>
+                <span>verifikasi User</span>
+            </a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link {{ set_active('admin/laporan-divisi*') }}" href="{{ route('admin.laporan-divisi.index') }}">

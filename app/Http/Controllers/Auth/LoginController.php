@@ -4,34 +4,28 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/dashboard';
+    protected function authenticated($request, $user)
+    {
+        // Cek apakah role_id 4 (warga)
+        if ($user->role_id == 4) {
+            if ($user->status == 1) {
+                return redirect('/dashboard');
+            } else {
+                Auth::logout();
+                return redirect('/verification/pending');
+            }
+        }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+        // Selain role_id 4 langsung ke dashboard
+        return redirect('/dashboard');
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
