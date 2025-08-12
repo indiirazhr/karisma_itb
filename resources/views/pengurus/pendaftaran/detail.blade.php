@@ -28,7 +28,7 @@
                         <th>WA</th>
                         <th>Sekolah</th>
                         <th>Alasan</th>
-                        
+                        <th>Kehadiran</th>
                         <th>Tanggal</th>
                         <th>Aksi</th>
                     </tr>
@@ -42,6 +42,13 @@
                             <td>{{ $item->user->no_wa ?? '-' }}</td>
                             <td>{{ $item->user->asal_sekolah ?? '-' }}</td>
                             <td>{{ $item->alasan ?? '-' }}</td>
+                            <td>
+                    @if($item->presensi)
+                    <span class="badge bg-success">✅ Hadir</span>
+                    @else
+                    <span class="badge bg-danger">❌ Tidak Hadir</span>
+                    @endif
+                </td>
                             
                             <td>{{ $item->created_at->format('d M Y') }}</td>
                             <td class="text-nowrap">

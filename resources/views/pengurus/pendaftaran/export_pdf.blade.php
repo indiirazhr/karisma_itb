@@ -39,10 +39,14 @@
 <body>
     <h2>Laporan Program: {{ $program->judul }}</h2>
     <h3>
-    Waktu : 
+    Waktu Pelaksanaan: 
     {{ \Carbon\Carbon::parse($program->tanggal . ' ' . $program->waktu)->translatedFormat('d F Y H:i') }}
-    sampai
+    
+</h3>
+<h3>
+    Akhir Pelaksanaan : 
     {{ \Carbon\Carbon::parse($program->tanggal_berakhir . ' ' . $program->waktu_berakhir)->translatedFormat('d F Y H:i') }}
+
 </h3>
 
     <h3>Lokasi : {{$program->lokasi}}</h3>
