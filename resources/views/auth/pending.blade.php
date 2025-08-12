@@ -1,52 +1,106 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<html lang="id" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="shortcut icon" type="image/png" href="{{ asset('modernize/assets/images/logos/favicon.png') }}" />
+  <link rel="shortcut icon" href="{{ asset('modernize/assets/images/logos/favicon.png') }}" type="image/png" />
   <link rel="stylesheet" href="{{ asset('modernize/assets/css/styles.css') }}" />
-
   <title>Akun Belum Diverifikasi</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    #main-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      width: 90%;
+      max-width: 500px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container h2 {
+      color: #333;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .container p {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .alert-warning {
+      background-color: #fff3cd;
+      color: #856404;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Preloader -->
-  <div class="preloader">
-    <img src="{{ asset('modernize/assets/images/logos/favicon.png') }}" alt="loader" class="lds-ripple img-fluid" />
-  </div>
-
   <div id="main-wrapper">
-    <div class="position-relative overflow-hidden min-vh-100 w-100 d-flex align-items-center justify-content-center">
-      <div class="d-flex align-items-center justify-content-center w-100">
-        <div class="row justify-content-center w-100">
-          <div class="col-lg-5 col-md-8">
-            <div class="text-center">
-              <h2 class="fw-semibold mb-3">Akun Belum Diverifikasi 👋</h2>
-              <p class="mb-4 text-muted">
-                Terima kasih telah mendaftar. Akun Anda sedang menunggu verifikasi dari Ketua RT.
-                <br>Silakan kembali beberapa saat lagi.
-              </p>
-              <img src="{{ asset('modernize/assets/images/backgrounds/verifikasi.png') }}" alt="Verifikasi Ilustrasi" class="img-fluid mb-4" style="max-width: 400px;">
-             
-             
+    <div class="container">
+      <h2>Akun Belum Diverifikasi 👋</h2>
+      <p>Terima kasih telah mendaftar. Akun Anda sedang menunggu verifikasi dari Staff Karisma ITB.</p>
+      <p>Silakan kembali beberapa saat lagi.</p>
 
-              @if(session('status'))
-                <div class="alert alert-warning">
-                  {{ session('status') }}
-                </div>
-              @endif
-
-              <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button class="btn btn-primary w-100">Kembali</button>
-              </form>
-            </div>
-          </div>
+      <!-- Session Alert -->
+      @if(session('status'))
+        <div class="alert alert-warning">
+          {{ session('status') }}
         </div>
-      </div>
+      @endif
+
+      <!-- Button Kembali -->
+      <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button class="btn btn-primary">Kembali</button>
+      </form>
     </div>
   </div>
 

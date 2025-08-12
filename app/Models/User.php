@@ -70,20 +70,20 @@ class User extends Authenticatable
         return $this->hasMany(Raport::class);
     }
 
-     public function amalyaumi()
-    {
-        return $this->hasMany(AmalYaumi::class);
-    }
+    //  public function amalyaumi()
+    // {
+    //     return $this->hasMany(AmalYaumi::class);
+    // }
 
-    public function pembayaran()
-    {
-        return $this->hasMany(Pembayaran::class);
-    }
+    // public function pembayaran()
+    // {
+    //     return $this->hasMany(Pembayaran::class);
+    // }
 
-     public function orders()
-    {
-        return $this->hasMany(Order::class);
-    }
+    //  public function orders()
+    // {
+    //     return $this->hasMany(Order::class);
+    // }
 
 
 }

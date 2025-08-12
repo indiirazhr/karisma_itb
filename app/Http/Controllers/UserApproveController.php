@@ -28,7 +28,7 @@ class UserApproveController extends Controller
 
         //  dd($user);
 
-        return back()->with('success', 'Akun warga berhasil disetujui.');
+        return back()->with('success', 'Akun peserta berhasil disetujui.');
  
     }
     public function create()

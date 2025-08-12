@@ -35,7 +35,7 @@
         <li class="nav-item">
             <a class="nav-link {{ set_active('admin/verifikasi-user*') }}" href="{{ route('admin.verifikasi-user.index') }}">
                 <i class="fas fa-fw fa-users-cog"></i>
-                <span>verifikasi User</span>
+                <span>Verifikasi User</span>
             </a>
         </li>
 
@@ -54,19 +54,19 @@
         </li>
 
 
-         {{-- <li class="nav-item {{ set_active('admin/products*') }}">
+         <!-- {{-- <li class="nav-item {{ set_active('admin/products*') }}">
             <a class="nav-link" href="{{ route('admin.products.index') }}">
                 <i class="fas fa-fw fa-boxes"></i>
                 <span>Kelola Produk</span>
             </a>
-        </li> --}}
+        </li> --}} -->
 
-         <li class="nav-item">
+         <!-- <li class="nav-item">
             <a class="nav-link {{ set_active('admin/verifikasi-pembayaran*') }}" href="{{ route('admin.verifikasi-pembayaran.index') }}">
                 <i class="fas fa-fw fa-money-check-alt"></i>
                 <span>Verifikasi Pembayaran</span>
             </a>
-        </li>
+        </li> -->
 
         <li class="nav-item {{ set_active('admin/category/categories*') }}">
            <a class="nav-link" href="{{ route('admin.categories.index') }}">
@@ -82,12 +82,12 @@
             </a>
         </li>
 
-        <li class="nav-item {{ set_active('admin/order*') }}">
+        <!-- <li class="nav-item {{ set_active('admin/order*') }}">
             <a class="nav-link" href="{{ route('admin.order.index') }}">
                 <i class="fas fa-fw fa-chalkboard-teacher"></i>
                 <span>List Order</span>
             </a>
-        </li>
+        </li> -->
 
          <li class="nav-item">
             <a class="nav-link {{ set_active('admin/kontak*') }}" href="{{ route('admin.kontak.index') }}">
@@ -165,7 +165,7 @@
          <li class="nav-item">
             <a class="nav-link {{ set_active('pengurus/dokumentasi*') }}" href="{{ route('pengurus.dokumentasi.index') }}">
                 <i class="fas fa-fw fa-images"></i>
-                <span>Dokumentasi</span>
+                <span>Berita Acara</span>
             </a>
         </li>
 

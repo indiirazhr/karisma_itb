@@ -16,21 +16,23 @@
     <table>
         <thead>
             <tr>
+                <th>Tanggal Kegiatan</th>
                 <th>Judul</th>
                 <th>Kegiatan</th>
                 <th>Deskripsi</th>
                 <th>Jumlah File</th>
-                <th>Tanggal Kegiatan</th>
+              
             </tr>
         </thead>
         <tbody>
             @forelse ($dokumentasi as $item)
                 <tr>
+                     <td>{{ $item->kegiatan->tanggal ?? '-' }}</td>
                     <td>{{ $item->judul }}</td>
                     <td>{{ $item->kegiatan->judul ?? '-' }}</td>
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->files->count() }} file</td>
-                    <td>{{ $item->kegiatan->tanggal ?? '-' }}</td>
+                   
                 </tr>
             @empty
                 <tr>

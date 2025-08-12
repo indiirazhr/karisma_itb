@@ -4,7 +4,7 @@
 <div class="container-fluid py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="fw-bold text-primary mb-0">
-            <i class="fas fa-users me-2"></i> Manajemen User
+            <i class="fas fa-users me-2"></i> Verifikasi User
         </h4>
     </div>
 
@@ -30,7 +30,7 @@
     <div class="card border-0 shadow-sm mb-4">
         <div class="card-body">
 
-    <h4 class="mb-3">Daftar Warga yang Belum di Verifikasi</h4>
+    <h4 class="mb-3">Daftar peserta yang belum di verifikasi</h4>
   
   @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
@@ -58,7 +58,7 @@
         </tr>
         @empty
       <tr>
-          <td colspan="5" class="text-center text-muted">Belum ada data verifikasi warga</td>
+          <td colspan="5" class="text-center text-muted">Belum ada data verifikasi peserta</td>
       </tr>
       @endforelse
     </tbody>
