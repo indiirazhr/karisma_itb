@@ -28,7 +28,7 @@
                         <th>WA</th>
                         <th>Sekolah</th>
                         <th>Alasan</th>
-                        <th>Status</th>
+                        
                         <th>Tanggal</th>
                         <th>Aksi</th>
                     </tr>
@@ -42,27 +42,10 @@
                             <td>{{ $item->user->no_wa ?? '-' }}</td>
                             <td>{{ $item->user->asal_sekolah ?? '-' }}</td>
                             <td>{{ $item->alasan ?? '-' }}</td>
-                            <td>
-                                <span class="badge bg-{{ 
-                                    $item->status === 'pending' ? 'warning' : 
-                                    ($item->status === 'disetujui' ? 'success' : 'danger') }}">
-                                    {{ ucfirst($item->status) }}
-                                </span>
-                            </td>
+                            
                             <td>{{ $item->created_at->format('d M Y') }}</td>
                             <td class="text-nowrap">
-                                <form action="{{ route('pengurus.pendaftaran.updateStatus', $item->id) }}" method="POST" class="d-inline-flex gap-1 align-items-center">
-                                    @csrf
-                                    @method('PUT')
-                                    <select name="status" class="form-select form-select-sm me-1">
-                                        <option value="pending" {{ $item->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="disetujui" {{ $item->status == 'disetujui' ? 'selected' : '' }}>Disetujui</option>
-                                        <option value="ditolak" {{ $item->status == 'ditolak' ? 'selected' : '' }}>Ditolak</option>
-                                    </select>
-                                    <button type="submit" class="btn btn-sm btn-primary" title="Update Status">
-                                        <i class="fas fa-check"></i>
-                                    </button>
-                                </form>
+                                
 
                                 <form action="{{ route('pengurus.pendaftaran.destroy', $item->id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Yakin ingin menghapus pendaftaran ini?')">
                                     @csrf

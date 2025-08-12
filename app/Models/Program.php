@@ -12,6 +12,8 @@ class Program extends Model
         'batas_pendaftar',
         'waktu',
         'tanggal',
+        'waktu_berakhir',
+        'tanggal_berakhir',
         'lokasi',
         'deskripsi',
         'file_path',

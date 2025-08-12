@@ -37,7 +37,22 @@
     </style>
 </head>
 <body>
-    <h2>Daftar Peserta Program: {{ $program->judul }}</h2>
+    <h2>Laporan Program: {{ $program->judul }}</h2>
+    <h3>
+    Waktu : 
+    {{ \Carbon\Carbon::parse($program->tanggal . ' ' . $program->waktu)->translatedFormat('d F Y H:i') }}
+    sampai
+    {{ \Carbon\Carbon::parse($program->tanggal_berakhir . ' ' . $program->waktu_berakhir)->translatedFormat('d F Y H:i') }}
+</h3>
+
+    <h3>Lokasi : {{$program->lokasi}}</h3>
+    <h3>Jumlah Peserta : {{$program->pendaftarans->count()}}</h3>
+    <h3>Jumlah Peserta hadir: {{$program->pendaftarans()
+    ->whereHas('presensi')
+    ->count();}}</h3>
+
+    <h3>Deskripsi :</h3>
+    <p>{{$program->deskripsi}}</p>
 
     <table>
         <thead>
@@ -47,7 +62,7 @@
                 <th>Email</th>
                 <th>WA</th>
                 <th>Sekolah</th>
-                <th>Status</th>
+                <th>Kehadiran</th>
             </tr>
         </thead>
         <tbody>
@@ -58,7 +73,13 @@
                 <td>{{ $item->user->email ?? '-' }}</td>
                 <td>{{ $item->user->no_wa ?? '-' }}</td>
                 <td>{{ $item->user->asal_sekolah ?? '-' }}</td>
-                <td>{{ ucfirst($item->status) }}</td>
+                <td>
+                    @if($item->presensi)
+                    hadir
+                    @else
+                    Tidak hadir
+                    @endif
+                </td>
             </tr>
             @empty
             <tr>

@@ -240,6 +240,8 @@ Route::middleware('CheckRole:Peserta')->prefix('Peserta')->name('Peserta.')->gro
         Route::get('/', [PendaftaranController::class, 'index'])->name('index');
         Route::get('/list', [PendaftaranController::class, 'listProgram'])->name('list');
         Route::post('/store', [PendaftaranController::class, 'store'])->name('store');
+        Route::post('/presensi', [PendaftaranController::class, 'presensi'])->name('presensi');
+
     });
 });
 

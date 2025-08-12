@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Program;
+use App\Models\Kegiatan;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,28 +26,39 @@ class ProgramController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
+
        $request->validate([
             'judul' => 'required|string|max:255',
             'batas_pendaftar'   => 'required',
             'waktu'     => 'required',
             'tanggal'   => 'required',
+            'waktu_berakhir'     => 'required',
+            'tanggal_berakhir'   => 'required',
             'lokasi'    => 'required',
             'deskripsi' => 'required|string',
-            'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048|required',
             'category_id' => 'required|exists:categories,id',
         ]);
 
         $path = $request->file('file')?->store('program_files', 'public');
-
+        // dd($request);
         Program::create([
             'judul' => $request->judul,
             'batas_pendaftar'   => $request->batas_pendaftar,
             'waktu' => $request->waktu,
             'tanggal' => $request->tanggal,
+            'waktu_berakhir' => $request->waktu_berakhir,
+            'tanggal_berakhir' => $request->tanggal_berakhir,
             'lokasi' => $request->lokasi,
             'deskripsi' => $request->deskripsi,
             'file_path' => $path,
             'category_id' => $request->category_id,
+        ]);
+         Kegiatan::create([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'tanggal' => $request->tanggal,
         ]);
 
         return redirect()->route('admin.program.index')->with('success', 'Program berhasil ditambahkan.');
@@ -60,8 +72,9 @@ class ProgramController extends Controller
 
     public function update(Request $request, Program $program)
     {
+        // dd($request);
          $request->validate([
-            'judul' => 'required|string|max:255',
+             'judul' => 'required|string|max:255',
             'batas_pendaftar'   => 'required',
             'waktu'     => 'required',
             'tanggal'   => 'required',

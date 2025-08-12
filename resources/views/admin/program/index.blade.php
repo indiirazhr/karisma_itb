@@ -23,8 +23,8 @@
                             <th>No</th>
                             <th>Judul</th>
                             <th>Batas pendaftar</th>
-                            <th>Waktu</th>
-                            <th>Tanggal</th>
+                            <th>Waktu Mulai</th>
+                            <th>Waktu Berakhir</th>
                             <th>Lokasi</th>
                             <th>Kategori</th>
                             <th>Deskripsi</th>
@@ -42,8 +42,8 @@
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $program->judul }}</td>
                             <td>{{ $program->batas_pendaftar }}</td>
-                            <td>{{ $program->waktu }}</td>
-                            <td>{{ $program->tanggal }}</td>
+                            <td>{{ $program->waktu }} {{ $program->tanggal }}</td>
+                            <td>{{ $program->waktu_berakhir }} {{ $program->tanggal_berakhir }}</td>
                             <td>{{ $program->lokasi }}</td>
                             <td>{{ $program->category->nama ?? '-' }}</td>
                             <td>

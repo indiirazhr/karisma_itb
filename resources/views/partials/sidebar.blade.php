@@ -193,12 +193,12 @@
             <hr class="sidebar-divider">
             <div class="sidebar-heading">Kegiatan Saya</div>
 
-            <li class="nav-item {{ set_active('Peserta/pembayaran/riwayat*') }}">
+            {{-- <li class="nav-item {{ set_active('Peserta/pembayaran/riwayat*') }}">
                 <a class="nav-link" href="{{ route('Peserta.pembayaran.riwayat') }}">
                     <i class="fas fa-fw fa-money-check"></i>
                     <span>Pembayaran</span>
                 </a>
-            </li>
+            </li> --}}
 
             {{-- <li class="nav-item {{ set_active('Peserta/amal-yaumi*') }}">
                 <a class="nav-link" href="{{ route('Peserta.amal-yaumi.index') }}">

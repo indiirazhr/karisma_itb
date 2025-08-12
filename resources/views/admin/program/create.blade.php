@@ -40,13 +40,25 @@
                     <div class="row">
                         <div class="col-md-6">
                            <div class="mb-3">
-                                <label for="waktu">Waktu</label>
+                                <label for="waktu">Waktu Mulai</label>
                                 <input type="time" name="waktu" class="form-control">
                            </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="waktu">Tanggal</label>
+                            <label for="waktu">Tanggal Mulai</label>
                             <input type="date" name="tanggal" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                           <div class="mb-3">
+                                <label for="waktu">Waktu Berakhir</label>
+                                <input type="time" name="waktu_berakhir" class="form-control">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="waktu">Tanggal Berakhir</label>
+                            <input type="date" name="tanggal_berakhir" class="form-control">
                         </div>
                     </div>
 
@@ -66,7 +78,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="file" class="form-label">Upload File / Gambar (Opsional)</label>
+                        <label for="file" class="form-label">Upload File / Gambar </label>
                         <input type="file" name="file" class="form-control" accept=".jpg,.jpeg,.png,.pdf">
                     </div>
 

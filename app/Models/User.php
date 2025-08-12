@@ -30,6 +30,7 @@ class User extends Authenticatable
         'email',
         'email_verified_at',
         'password',
+        'kartu_pelajar',
         'no_wa',
         'foto',
         'nama_univ',

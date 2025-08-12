@@ -31,4 +31,8 @@ class Pendaftaran extends Model
     {
         return $this->belongsTo(Program::class);
     }
+    public function presensi()
+    {
+        return $this->hasOne(Presensi::class);
+    }
 }

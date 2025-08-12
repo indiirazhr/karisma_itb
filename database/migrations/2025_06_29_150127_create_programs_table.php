@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('batas_pendaftar');
             $table->time('waktu');
             $table->date('tanggal');
+            $table->time('waktu_berakhir');
+            $table->date('tanggal_berakhir');
             $table->string('lokasi');
             $table->text('deskripsi');
             $table->string('file_path')->nullable();

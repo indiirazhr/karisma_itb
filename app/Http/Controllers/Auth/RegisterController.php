@@ -52,7 +52,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role_id'   => ['required', 'string']
+            'role_id'   => ['required', 'string'],
+            'kartu_pelajar'  => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ]);
     }
 
@@ -68,7 +69,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role_id'   => $data['role_id']
+            'role_id'   => $data['role_id'],
+             'kartu_pelajar'  => isset($data['kartu_pelajar']) 
+                        ? $data['kartu_pelajar']->store('kartu_pelajar', 'public') 
+                        : null,
         ]);
     }
 }

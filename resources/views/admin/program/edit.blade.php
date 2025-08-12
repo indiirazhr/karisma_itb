@@ -16,7 +16,7 @@
 
         <div class="card shadow-sm">
             <div class="card-body">
-                <form action="{{ route('admin.program.update', $program->id) }}" method="POST">
+                <form action="{{ route('admin.program.update', $program->id) }}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -52,7 +52,18 @@
                             <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal', $program->tanggal) }}">
                         </div>
                     </div>
-
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="mb-3">
+                                <label for="waktu">Waktu Berakhir</label>
+                                <input type="time" name="waktu_berakhir" value="{{ old('waktu', $program->waktu_berakhir) }}" class="form-control">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="waktu">Tanggal Berakhir</label>
+                            <input type="date" name="tanggal_berakhir"  value="{{ old('tanggal', $program->tanggal_berakhir) }}" class="form-control">
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="batas_pendaftar">Batas Pendaftar</label>
                         <input type="number" name="batas_pendaftar" class="form-control" value="{{ old('batas_pendaftar', $program->batas_pendaftar) }}">
@@ -68,7 +79,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="file" class="form-label">Ganti File (Opsional)</label>
+                        <label for="file" class="form-label">Ganti File </label>
                         <input type="file" name="file" class="form-control" accept=".jpg,.jpeg,.png,.pdf">
                         @if ($program->file_path)
                             <small class="d-block mt-1">File saat ini: <a

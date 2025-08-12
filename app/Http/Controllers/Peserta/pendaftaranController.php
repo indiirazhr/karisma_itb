@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Peserta;
 use App\Http\Controllers\Controller;
 use App\Models\Pendaftaran;
 use App\Models\Program;
+use App\Models\Presensi;
 use Illuminate\Http\Request;
 
 class PendaftaranController extends Controller
@@ -71,9 +72,25 @@ class PendaftaranController extends Controller
             'user_id' => auth()->id(),
             'program_id' => $request->program_id,
             'alasan' => $request->alasan,
-            'status' => 'pending',
+            'status' => 'disetujui',
         ]);
 
         return redirect()->route('Peserta.pendaftaran-program.index')->with('success', 'Berhasil mendaftar program.');
+    }
+
+    public function presensi(request $request){
+        // dd($request);
+     $validated = $request->validate([
+            'pendaftaran_id' => 'required|exists:pendaftarans,id',
+        ]);
+
+        Presensi::create([
+            'pendaftaran_id' => $validated['pendaftaran_id'],
+            'waktu_hadir' => now(),
+        ]);
+
+        return redirect()->route('Peserta.pendaftaran-program.index')->with('success', 'Berhasil melakukan presensi.');
+    
+        
     }
 }

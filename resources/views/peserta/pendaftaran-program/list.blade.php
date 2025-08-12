@@ -17,7 +17,7 @@
                 <div class="card h-100 shadow-sm border-0 hover-shadow">
                     <div class="card-body d-flex flex-column">
                         <div class="mb-2">
-                            <span class="badge bg-info text-dark">{{ $program->created_at->format('d M Y') }}</span>
+                            <span class="badge bg-info text-dark">{{ \Carbon\Carbon::parse($program->tanggal)->format('d M Y') }}</span>
                         </div>
 
                           <div class="portfolio-image">
@@ -42,9 +42,14 @@
                             </td>
 
                         <h5 class="fw-semibold text-primary">{{ $program->judul }}</h5>
-                        <p>{{ $program->waktu }}</p>
-                        <p>{{ $program->lokasi }}</p>
-
+                        <p>Waktu Pelaksanaan : {{ $program->waktu }}</p>
+                        <p>Lokasi : {{ $program->lokasi }}</p>
+                        @if($program->pendaftarans->count() == $program->batas_pendaftar )
+                       <p class="text-danger"> Kuota Peserta: {{$program->pendaftarans->count()}}/{{$program->batas_pendaftar}} (Penuh)</p>
+                       @else
+                       <p> Kuota Peserta: {{$program->pendaftarans->count()}}/{{$program->batas_pendaftar}}</p>
+                       @endif
+                        Deskripsi :
                         {{-- Deskripsi dengan modal --}}
                         @php
                             $isLong = strlen(strip_tags($program->deskripsi)) > 120;
@@ -60,7 +65,10 @@
                         @if(in_array($program->id, $sudahDaftar))
                             <span class="badge bg-secondary mt-auto">✅ Sudah Didaftar</span>
                         @else
-                            <form action="{{ route('Peserta.pendaftaran-program.store') }}" method="POST" class="mt-auto">
+
+                        @if($program->pendaftarans->count() == $program->batas_pendaftar )
+                        @else
+                        <form action="{{ route('Peserta.pendaftaran-program.store') }}" method="POST" class="mt-auto">
                                 @csrf
                                 <input type="hidden" name="program_id" value="{{ $program->id }}">
                                 <div class="mb-2">
@@ -70,6 +78,9 @@
                                     <i class="fas fa-paper-plane me-1"></i> Daftar Sekarang
                                 </button>
                             </form>
+                        @endif
+
+                            
                         @endif
                     </div>
                 </div>

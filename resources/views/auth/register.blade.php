@@ -19,15 +19,19 @@
         body {
             background-color: #f8f9fc;
         }
+
         .card {
             border-radius: 1rem;
         }
+
         .form-control {
             border-radius: 0.5rem;
         }
+
         .text-danger {
             font-size: 0.875rem;
         }
+
         .login-brand {
             font-weight: bold;
             color: #4e73df;
@@ -42,20 +46,21 @@
             <div class="card shadow-sm">
                 <div class="card-body px-4 py-5">
                     <div class="text-center mb-4">
-                         <img src="assets/img/logo.jpeg" alt="Logo KARISMA" class="img-fluid" width="60">
+                        <img src="assets/img/logo.jpeg" alt="Logo KARISMA" class="img-fluid" width="60">
                         <h4 class="mt-2 text-primary">REGISTER</h4>
                         <div class="login-brand">Website KARISMA ITB</div>
                     </div>
 
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <input type="hidden" name="role_id" value="4">
+
                         <div class="mb-3">
                             <label for="name" class="form-label fw-semibold">Nama</label>
                             <input id="name" type="text"
-                                   class="form-control @error('name') is-invalid @enderror"
-                                   name="name" value="{{ old('name') }}" required autofocus>
+                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                value="{{ old('name') }}" required autofocus>
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -64,8 +69,8 @@
                         <div class="mb-3">
                             <label for="email" class="form-label fw-semibold">Email</label>
                             <input id="email" type="email"
-                                   class="form-control @error('email') is-invalid @enderror"
-                                   name="email" value="{{ old('email') }}" required>
+                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                value="{{ old('email') }}" required>
                             @error('email')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -74,8 +79,7 @@
                         <div class="mb-3">
                             <label for="password" class="form-label fw-semibold">Password</label>
                             <input id="password" type="password"
-                                   class="form-control @error('password') is-invalid @enderror"
-                                   name="password" required>
+                                class="form-control @error('password') is-invalid @enderror" name="password" required>
                             @error('password')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -83,9 +87,25 @@
 
                         <div class="mb-4">
                             <label for="password-confirm" class="form-label fw-semibold">Konfirmasi Password</label>
-                            <input id="password-confirm" type="password"
-                                   class="form-control" name="password_confirmation" required>
+                            <input id="password-confirm" type="password" class="form-control"
+                                name="password_confirmation" required>
                         </div>
+
+                        <!-- Tambahan input upload gambar kartu pelajar -->
+                        <!-- Tambahan input upload gambar kartu pelajar -->
+                        <div class="mb-4">
+                            <label for="kartu_pelajar" class="form-label fw-semibold">Upload Kartu Pelajar</label>
+                            <input id="kartu_pelajar" type="file"
+                                class="form-control @error('kartu_pelajar') is-invalid @enderror" name="kartu_pelajar"
+                                accept="image/*" required>
+                            @error('kartu_pelajar')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                            <div class="form-text text-muted small">
+                                Format yang diizinkan: JPG, PNG, JPEG. Maksimal 2MB.
+                            </div>
+                        </div>
+
 
                         <div class="d-grid mb-2">
                             <button type="submit" class="btn btn-primary">
@@ -111,4 +131,5 @@
     <script src="/admin/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="/admin/assets/js/ruang-admin.min.js"></script>
 </body>
+
 </html>
